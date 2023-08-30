@@ -1,0 +1,59 @@
+{
+  "characters": [
+    {
+      "id": 1,
+      "basicInfo": {
+        "name": "Nyx",
+        "class": "Paladin",
+        "level": 2,
+        "background": "Folk Hero",
+        "playerName": "Chris",
+        "race": "Rock Gnome",
+        "alignment": "Neutral Good"
+      },
+      "stats": {
+        "str": 16,
+        "dex": 8,
+        "con": 13,
+        "int": 9,
+        "wis": 11,
+        "cha": 14
+      },
+      "profBonus": 2,
+      "savingThrows": {
+        "str": 3,
+        "dex": -1,
+        "con": 1,
+        "int": -1,
+        "wis": 2,
+        "cha": 4
+      },
+      "skills": {
+        "acrobatics": 0,
+        "animHand": -1,
+        "arcane": 2,
+        "athl": -1,
+        "decep": 3,
+        "hist": -1,
+        "insight": 0,
+        "intimid": 2,
+        "invest": 1,
+        "med": 0,
+        "nature": -1,
+        "percep": 0,
+        "perf": 2,
+        "pers": 4,
+        "religion": 1,
+        "sOfH": -1,
+        "stealth": -1,
+        "surv": 2
+      },
+      "combat": {
+        "hpMax": 20,
+        "ac": 18,
+        "speed": 25,
+        "hitDice": "2d10"
+      }
+    }
+  ]
+}

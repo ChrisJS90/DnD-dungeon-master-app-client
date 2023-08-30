@@ -1,0 +1,14 @@
+#basic-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#stats {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+#combat-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
