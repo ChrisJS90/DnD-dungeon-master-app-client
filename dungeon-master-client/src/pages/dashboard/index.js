@@ -8,10 +8,11 @@ const Dashboard = () => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/characters`)
+    fetch(`http://localhost:4000/character`)
       .then((res) => res.json())
       .then((data) => {
-        setCharacters(...characters, data);
+        setCharacters(...characters, data.data);
+        console.log(characters)
       });
   }, []);
 
@@ -20,14 +21,24 @@ const Dashboard = () => {
       <div id="sidebar">
         <p>User Name</p>
         <p>Characters</p>
-        {/* needs to be a list */}
+        <ul>
+          {characters.map((char) => {
+            return (
+              <li>{`${char.name}`}</li>
+            )
+          })}
+        </ul>
         <button onClick={() => navigate("/new_character")}>
           Make new character
+        </button>
+        <button onClick={() => navigate("/encounter", {state: {characters}})}>
+          {/* Not terribly fussed with it right now but can add a state into the arguments with navigate to use props */}
+          Encounter
         </button>
         <p>Party View</p>
       </div>
       <div id="party">
-        <ul>
+        <ul className="characterCards">
           {characters.map((char) => {
             return (
               <li>

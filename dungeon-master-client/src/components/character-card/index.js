@@ -65,16 +65,16 @@ const CharacterCard = ({ character }) => {
   }
 
   return (
-    <>
+    <div id="card">
       <div id="basic-info">
-        <h3>{`${char.basicInfo.name}`}</h3>
-        <h4>{`Player: ${char.basicInfo.playerName}`}</h4>
+        <h3>{`${char.name}`}</h3>
+        <h4>{`Player: ${char.player}`}</h4>
         <div id="basic-details">
           <p>
-            {`${char.basicInfo.class}`} Level: {`${char.basicInfo.level}`}
+            {`${char.class}`} Level: {`${char.level}`}
           </p>
-          <p>{`${char.basicInfo.race}`}</p>
-          <p>{`${char.basicInfo.alignment}`}</p>
+          <p>{`${char.race}`}</p>
+          <p>{`${char.alignment}`}</p>
         </div>
       </div>
       <div id="combat-info">
@@ -133,7 +133,7 @@ const CharacterCard = ({ character }) => {
           <p>{`${mods.cha}`}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

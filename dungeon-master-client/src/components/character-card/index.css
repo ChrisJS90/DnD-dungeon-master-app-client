@@ -11,4 +11,17 @@
 #combat-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 5px;
+}
+
+p {
+    font-size: medium;
+}
+
+#card {
+    border: solid;
+}
+
+.stat {
+    border: solid;
 }

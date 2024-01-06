@@ -3,6 +3,12 @@
     grid-template-columns: 100px 1fr;
 }
 
+.characterCards {
+    display: flex;
+}
+
 li {
     list-style: none;
+    font-size: small;
+    padding: 5px;
 }
