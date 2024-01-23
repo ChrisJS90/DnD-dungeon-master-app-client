@@ -35,3 +35,5 @@ const CombatCard = ({ character }) => {
     </div>
   )
 };
+
+export default CombatCard

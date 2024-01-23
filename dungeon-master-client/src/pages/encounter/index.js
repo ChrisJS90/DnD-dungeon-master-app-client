@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Modal from 'react-modal'
 import Sidebar from "../../components/sidebar";
+import CombatCard from "../../components/combat-card";
 
 
 const Encounter = () => {
@@ -36,19 +37,46 @@ const Encounter = () => {
 
 
     const [enemies, setEnemies] = useState([]);
-    const [entities, setEntities] = useState([]);
+    const [entities, setEntities] = useState(inCharacters.characters);
     const [modalIsOpen, setIsOpen] = useState(false)
+    const [isInitiative, setIsInitiative] = useState(false)
 
-    let isInitiative = false
-    console.log(characters)
+    function checkInitiative() {
+        if(isInitiative === false) {
+            return (
+                <div>
+                    <p id="initiative-warning">Set initiative for all entities!!!</p>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <p>All entities have initiative set</p>
+                </div>
+            )
+        }
+    }
+    console.log(entities)
 
     // Logic to set initiative
     //      Assign initiative to every entity
     //      New array with all entities ordered by initiative (high->low)
     //      
 
+    function sortOrder() {
+        if(isInitiative === false) {
+            characters.map((char) => {
+                setEntities([...entities, char])
+            })
+            enemies.map((enemy) => {
+                setEntities([...entities, enemy])
+            })
+        }
+    }
 
+    
 
+    // Modal functions
     function openModal() {
         setIsOpen(true)
     }
@@ -102,6 +130,8 @@ const Encounter = () => {
         closeModal()
     }
 
+    // End Modal Functions
+
 
 
 
@@ -149,6 +179,22 @@ const Encounter = () => {
                 <div>
                     <ul>
                         {/* list in initiative order */}
+                        {entities.map((ent) => {
+                            console.log('is this map running')
+                            console.log('check hpMax', ent.combat.hpMax)
+                            return (
+                                <li>
+                                    <CombatCard character={ent} />
+                                </li>
+                            )
+                            // if(ent.hasOwnProperty(`class`)) {
+                            //     return (
+                            //         <li>
+                            //             <CombatCard character={ent} />
+                            //         </li>
+                            //     )
+                            // }
+                        })}
                     </ul>
                 </div>
             </div>
