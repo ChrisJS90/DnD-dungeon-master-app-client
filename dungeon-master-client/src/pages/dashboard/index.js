@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CharacterCard from "../../components/character-card";
+import Sidebar from "../../components/sidebar";
 import "./index.css"
 
 const Dashboard = () => {
@@ -19,23 +20,7 @@ const Dashboard = () => {
   return (
     <div id="dashboard">
       <div id="sidebar">
-        <p>User Name</p>
-        <p>Characters</p>
-        <ul>
-          {characters.map((char) => {
-            return (
-              <li>{`${char.name}`}</li>
-            )
-          })}
-        </ul>
-        <button onClick={() => navigate("/new_character")}>
-          Make new character
-        </button>
-        <button onClick={() => navigate("/encounter", {state: {characters}})}>
-          {/* Not terribly fussed with it right now but can add a state into the arguments with navigate to use props */}
-          Encounter
-        </button>
-        <p>Party View</p>
+        <Sidebar characters = {characters} />
       </div>
       <div id="party">
         <ul className="characterCards">
