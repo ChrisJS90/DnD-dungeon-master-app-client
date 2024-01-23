@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import Modal from 'react-modal'
 import Sidebar from "../../components/sidebar";
 import CombatCard from "../../components/combat-card";
+import EnemyCard from "../../components/enemy-card";
+import "./index.css"
 
 
 const Encounter = () => {
@@ -127,6 +129,7 @@ const Encounter = () => {
     function handleSubmit(e) {
         e.preventDefault()
         setEnemies([...enemies, newEnemy])
+        setEntities([...entities, newEnemy])
         closeModal()
     }
 
@@ -136,11 +139,11 @@ const Encounter = () => {
 
 
     return (
-        <>
+        <div id="main">
             <div id="sidebar">
                 <Sidebar characters={characters} />
             </div>
-            <div>
+            <div id="main-body">
                 <div id="topbar">
                     <button onClick={openModal}>Add Enemy</button>
                     <Modal isOpen={modalIsOpen}>
@@ -171,8 +174,7 @@ const Encounter = () => {
                             </ul>
                                 <input type="submit" value="Submit" />
                         </form>
-                        <button onClick={closeModal}>Cancel</button>
-                        
+                        <button onClick={closeModal}>Cancel</button>    
                     </Modal>
 
                 </div>
@@ -180,25 +182,24 @@ const Encounter = () => {
                     <ul>
                         {/* list in initiative order */}
                         {entities.map((ent) => {
-                            console.log('is this map running')
-                            console.log('check hpMax', ent.combat.hpMax)
-                            return (
-                                <li>
-                                    <CombatCard character={ent} />
-                                </li>
-                            )
-                            // if(ent.hasOwnProperty(`class`)) {
-                            //     return (
-                            //         <li>
-                            //             <CombatCard character={ent} />
-                            //         </li>
-                            //     )
-                            // }
+                            if(ent.hasOwnProperty(`class`)) {
+                                return (
+                                    <li>
+                                        <CombatCard character={ent} />
+                                    </li>
+                                )
+                            } else {
+                                return (
+                                    <li>
+                                        <EnemyCard enemy={ent} />
+                                    </li>
+                                )
+                            }
                         })}
                     </ul>
                 </div>
             </div>
-        </>
+        </div>
     )
 
 
