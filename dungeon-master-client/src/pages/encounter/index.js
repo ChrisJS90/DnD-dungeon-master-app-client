@@ -41,10 +41,11 @@ const Encounter = () => {
     const [enemies, setEnemies] = useState([]);
     const [entities, setEntities] = useState(inCharacters.characters);
     const [modalIsOpen, setIsOpen] = useState(false)
+    const [initiativeModalOpen, setInitiativeModal] = useState(false)
     const [isInitiative, setIsInitiative] = useState(false)
 
     function checkInitiative() {
-        if(isInitiative === false) {
+        if (isInitiative === false) {
             return (
                 <div>
                     <p id="initiative-warning">Set initiative for all entities!!!</p>
@@ -66,7 +67,7 @@ const Encounter = () => {
     //      
 
     function sortOrder() {
-        if(isInitiative === false) {
+        if (isInitiative === false) {
             characters.map((char) => {
                 setEntities([...entities, char])
             })
@@ -76,9 +77,11 @@ const Encounter = () => {
         }
     }
 
-    
+
 
     // Modal functions
+
+    // Enemy Modal
     function openModal() {
         setIsOpen(true)
     }
@@ -128,9 +131,21 @@ const Encounter = () => {
 
     function handleSubmit(e) {
         e.preventDefault()
-        setEnemies([...enemies, newEnemy])
-        setEntities([...entities, newEnemy])
-        closeModal()
+        if (e.target.name === "enemyForm") {
+            setEnemies([...enemies, newEnemy])
+            setEntities([...entities, newEnemy])
+            closeModal()
+        }
+    }
+
+    // Initiative Modal
+
+    function openInitiativeModal() {
+        setInitiativeModal(true)
+    }
+
+    function closeInitiativeModal() {
+        setInitiativeModal(false)
     }
 
     // End Modal Functions
@@ -145,44 +160,65 @@ const Encounter = () => {
             </div>
             <div id="main-body">
                 <div id="topbar">
-                    <button onClick={openModal}>Add Enemy</button>
-                    <Modal isOpen={modalIsOpen}>
-                        <form onSubmit={handleSubmit}>
-                            <input type="text" name="name" placeholder="Name" onChange={handleChange} />
-                            <input type="number" name="ac" placeholder="AC" onChange={handleChange} />
-                            <input type="number" name="hp" placeholder="HP" onChange={handleChange} />
-                            <input type="number" name="speed" placeholder="speed" onChange={handleChange} />
-                            <input type="text" name="vulnerabilities" placeholder="vulnerabilities" onChange={handleChange} />
-                            <input type="text" name="resistances" placeholder="resistances" onChange={handleChange} />
-                            <input type="text" name="special" placeholder="special" onChange={handleChange} />
-                            <button name="addSpecial" onClick={handleAdd}> Add Special </button>
-                            <ul>
-                                {newEnemy.special.map((item) => {
-                                    return (
-                                        <li>{`${item}`}</li>
-                                    )
-                                })}
-                            </ul>
-                            <input type="text" name="actions" placeholder="actions" onChange={handleChange} />
-                            <button name="addAction" onClick={handleAdd}>Add Action</button>
-                            <ul>
-                                {newEnemy.actions.map((item) => {
-                                    return (
-                                        <li>{`${item}`}</li>
-                                    )
-                                })}
-                            </ul>
+                    <span>
+                        <button onClick={openModal}>Add Enemy</button>
+                        <Modal isOpen={modalIsOpen}>
+                            <form onSubmit={handleSubmit} name="enemyForm">
+                                <input type="text" name="name" placeholder="Name" onChange={handleChange} />
+                                <input type="number" name="ac" placeholder="AC" onChange={handleChange} />
+                                <input type="number" name="hp" placeholder="HP" onChange={handleChange} />
+                                <input type="number" name="speed" placeholder="speed" onChange={handleChange} />
+                                <input type="text" name="vulnerabilities" placeholder="vulnerabilities" onChange={handleChange} />
+                                <input type="text" name="resistances" placeholder="resistances" onChange={handleChange} />
+                                <input type="text" name="special" placeholder="special" onChange={handleChange} />
+                                <button name="addSpecial" onClick={handleAdd}> Add Special </button>
+                                <ul>
+                                    {newEnemy.special.map((item) => {
+                                        return (
+                                            <li>{`${item}`}</li>
+                                        )
+                                    })}
+                                </ul>
+                                <input type="text" name="actions" placeholder="actions" onChange={handleChange} />
+                                <button name="addAction" onClick={handleAdd}>Add Action</button>
+                                <ul>
+                                    {newEnemy.actions.map((item) => {
+                                        return (
+                                            <li>{`${item}`}</li>
+                                        )
+                                    })}
+                                </ul>
                                 <input type="submit" value="Submit" />
-                        </form>
-                        <button onClick={closeModal}>Cancel</button>    
-                    </Modal>
+                            </form>
+                            <button onClick={closeModal}>Cancel</button>
+                        </Modal>
+                        <button onClick={openInitiativeModal}>Set Initiative</button>
+                        <Modal isOpen={initiativeModalOpen}>
+                            <form onSubmit={handleSubmit}>
+                                <ul>
+                                    {entities.map((ent) => {
+                                        return (
+                                            <li>
+                                                <span>
+                                                    <p>
+                                                    {`${ent.name}`}
+                                                    </p>
+                                                    <input type="number" name="initiative"  />
+                                                </span>
+                                            </li>)
+                                    })}
+                                </ul>
+                                <button onClick={closeInitiativeModal}>Cancel</button>
+                            </form>
+                        </Modal>
+                    </span>
 
                 </div>
                 <div>
                     <ul>
                         {/* list in initiative order */}
                         {entities.map((ent) => {
-                            if(ent.hasOwnProperty(`class`)) {
+                            if (ent.hasOwnProperty(`class`)) {
                                 return (
                                     <li>
                                         <CombatCard character={ent} />

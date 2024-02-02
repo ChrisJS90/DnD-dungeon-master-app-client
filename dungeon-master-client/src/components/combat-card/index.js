@@ -26,7 +26,7 @@ const CombatCard = ({ character }) => {
   }
 
   return (
-    <div id="card">
+    <div id="combat-card">
       <div id="basic">
         <p>{`${char.name}`}</p>
         <p>{`${char.class}`}</p>

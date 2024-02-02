@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./index.css"
 
 const EnemyCard = ({ enemy }) => {
     const [ene, setEne] = useState(enemy)
@@ -26,7 +27,7 @@ const EnemyCard = ({ enemy }) => {
     }
 
     return (
-        <div id="card">
+        <div id="enemy-card">
           <div id="basic">
             <p>{`${ene.name}`}</p>
             <p>{`${ene.vulnerabilities}`}</p>
