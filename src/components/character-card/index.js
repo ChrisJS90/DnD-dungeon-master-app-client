@@ -1,31 +1,32 @@
 import { useState } from "react";
+import { statMod } from "../functions"
 import "./index.css";
 
-function statMod(stat) {
-  if (stat === 1) {
-    return -5;
-  } else if (stat < 4) {
-    return -4;
-  } else if (stat < 6) {
-    return -3;
-  } else if (stat < 8) {
-    return -2;
-  } else if (stat < 10) {
-    return -1;
-  } else if (stat < 12) {
-    return 0;
-  } else if (stat < 14) {
-    return 1;
-  } else if (stat < 16) {
-    return 2;
-  } else if (stat < 18) {
-    return 3;
-  } else if (stat < 20) {
-    return 4;
-  } else {
-    return 5;
-  }
-}
+// function statMod(stat) {
+//   if (stat === 1) {
+//     return -5;
+//   } else if (stat < 4) {
+//     return -4;
+//   } else if (stat < 6) {
+//     return -3;
+//   } else if (stat < 8) {
+//     return -2;
+//   } else if (stat < 10) {
+//     return -1;
+//   } else if (stat < 12) {
+//     return 0;
+//   } else if (stat < 14) {
+//     return 1;
+//   } else if (stat < 16) {
+//     return 2;
+//   } else if (stat < 18) {
+//     return 3;
+//   } else if (stat < 20) {
+//     return 4;
+//   } else {
+//     return 5;
+//   }
+// }
 
 // ok so we can either have the mods here as currently written OR
 // use state (on the char state) to add in the mods as the character stats are let in OR

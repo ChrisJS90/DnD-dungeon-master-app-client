@@ -64,7 +64,7 @@ const Encounter = () => {
     // Logic to set initiative
     //      Assign initiative to every entity
     //      New array with all entities ordered by initiative (high->low)
-    //      
+    //      Use array.sort comparing initiative in descending order
 
     function sortOrder() {
         if (isInitiative === false) {
@@ -119,10 +119,10 @@ const Encounter = () => {
         e.preventDefault()
         const inputName = e.target.name
         if (inputName === "addSpecial") {
-            console.log('newEnemy was:', newEnemy)
-            console.log('newSpecial is:', newSpecial)
+            // console.log('newEnemy was:', newEnemy)
+            // console.log('newSpecial is:', newSpecial)
             setNewEnemy({ ...newEnemy, special: [...newEnemy.special, newSpecial] })
-            console.log('newEnemy is:', newEnemy)
+            // console.log('newEnemy is:', newEnemy)
             setNewSpecial('')
         } else if (inputName === 'addAction') {
             setNewEnemy({ ...newEnemy, actions: [...newEnemy.actions, newAction] })
@@ -131,11 +131,10 @@ const Encounter = () => {
 
     function handleSubmit(e) {
         e.preventDefault()
-        if (e.target.name === "enemyForm") {
-            setEnemies([...enemies, newEnemy])
-            setEntities([...entities, newEnemy])
-            closeModal()
-        }
+        console.log('Submitting...')
+        setEnemies([...enemies, newEnemy])
+        setEntities([...entities, newEnemy])
+        closeModal()
     }
 
     // Initiative Modal
@@ -201,9 +200,9 @@ const Encounter = () => {
                                             <li>
                                                 <span>
                                                     <p>
-                                                    {`${ent.name}`}
+                                                        {`${ent.name}`}
                                                     </p>
-                                                    <input type="number" name="initiative"  />
+                                                    <input type="number" name="initiative" />
                                                 </span>
                                             </li>)
                                     })}

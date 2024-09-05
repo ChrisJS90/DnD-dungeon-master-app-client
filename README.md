@@ -1,37 +1,12 @@
-# DnD-dungeon-master-app-client
+# Getting Started with Create React App
 
-# Description
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Dungeons & Dragons
+## Available Scripts
 
-Dungeons & Dragons, often shortened to DnD, is a tabletop role playing game in which a group of players is guided through a fantasy adventure by a Dungeon Master, DM (sometimes called Game Master, GM). Each player has a character with different attributes and skills. When a player wishes to perform an action, they will often have to roll a 20 sided die and add relevant modifiers. The DM will compare the player's roll to a score that is related to how difficult the action is to do. The DM is the only person who knows what that score is. The DM will let the player know if they have succeeded or failed their attempt.
-
-The Dungeon Master is has a lot to keep track of, from turn order in combat to spells and enemy stats. This is on top of coming up with interesting narratives and fun sessions for the players!
-
-Dungeons & Dragons can be played in a single session lasting a few hours to months, or years!, long campaign consisting of several sessions.
-
-## This App
-
-As a fan of Dungeons & Dragons and current Dungeon Master, I've decided to develop this app to aid DMs in keeping track of various elements of running a DnD campaign. The original idea was to have this app work solely as a way to keep track of the campaign players' characters, providing all the important information from each character sheet.
-
-Here is the first page of three of a character sheet:
-
-![](./dnd-character-sheet.webp)
-
-And here is the dashboard view of two characters in the same campaign:
-
-![](./dashboardExample.JPG)
-
-The user is able to make character sheets for their players and keep track of their health points. New features are being added with the current one being an encounter tracker, where the user can add enemies and have the turn order of a combat encounter displayed.
-
-See below for planned and current features.
-
-
-# Getting Started
+In the project directory, you can run:
 
 ### `npm start`
-
-Ensure that the server is running. The server code can be found [here] (https://github.com/ChrisJS90/DnD-dungeon-master-app-server)
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -39,25 +14,57 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-# Features
+### `npm test`
 
-## Current
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-View current characters and adjust their health points
+### `npm run build`
 
-## In Progress
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Adding new character to the server
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Encounter page to add enemies and keep track of health points and turn order
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Planned
+### `npm run eject`
 
-View full character sheets for each character
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-User login
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Create multiple campagins/parties
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

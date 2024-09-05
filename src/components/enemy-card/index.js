@@ -18,10 +18,10 @@ const EnemyCard = ({ enemy }) => {
             }
         } else {
             newHp++;
-            if (newHp <= ene.hpMax) {
+            if (newHp <= ene.hp) {
                 setHp(newHp);
             } else {
-                setHp(ene.hpMax);
+                setHp(ene.hp);
             }
         }
     }

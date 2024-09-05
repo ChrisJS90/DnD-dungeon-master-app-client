@@ -1,0 +1,30 @@
+#basic-info{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+}
+
+#stats {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+form {
+    display: grid;
+    grid-template-rows: .25fr 1fr;
+}
+
+#details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#stats-and-skills {
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+}
+
+#proficiency-bonus{
+    display: grid;
+    grid-template-columns: .25fr 1fr;
+}
