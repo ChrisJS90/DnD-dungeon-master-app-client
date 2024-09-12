@@ -126,6 +126,7 @@ const NewCharacter = () => {
       speed: 0,
       hitDice: "",
     },
+    otherProfs: ["common"]
     // personality: {
     //   traits: "",
     //   ideals: "",
@@ -649,6 +650,33 @@ const NewCharacter = () => {
     }
   } 
 
+  const [newProf, setNewProf] = useState("")
+
+  function handleChangeNewProf(e) {
+    const input = e.target.value
+    setNewProf(input)
+  }
+
+  function handleNewProf(e) {
+    e.preventDefault()
+    if(newProf.length > 0) {
+      setChar((prevState) => ({
+        ...prevState,
+        otherProfs: [...prevState.otherProfs, newProf]
+      }))
+      setNewProf("")
+    }
+  }
+
+  function removeProf(e) {
+    e.preventDefault();
+    const newProfList = newChar.otherProfs.filter((p) => p != e.target.value)
+    setChar((prevState) => ({
+      ...prevState,
+      otherProfs: [newProfList]
+    }))
+  }
+
   return (
     <>
       <div>
@@ -765,7 +793,7 @@ const NewCharacter = () => {
                       </li>
                     </ul>
                   </div>
-                  <div id="other-profs">
+                  <div id="skill-profs">
                     <ul>
                       <li className="skill-tile">
                         <input type="checkbox" name="acrobatics" onClick={handleProfs}></input>
@@ -841,6 +869,22 @@ const NewCharacter = () => {
                       </li>
                     </ul>
                   </div>
+                </div>
+              </div>
+              <div className="other-profs">
+                <ul>
+                  {newChar.otherProfs.map((othProf) => {
+                    return (
+                      <li key={othProf}>
+                        {othProf}
+                        <button name="remove-prof" onClick={removeProf} value={othProf}>X</button>
+                      </li>
+                    )
+                  })}
+                </ul>
+                <div id="add-prof">
+                  <input type="text" name="newProf" onChange={handleChangeNewProf}></input>
+                  <button onClick={handleNewProf}>Add new proficiency</button>
                 </div>
               </div>
 
