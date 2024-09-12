@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { statMod, profBonus } from "../../components/functions";
+import { statMod, profBonus, profCalc } from "../../components/functions";
 import "./index.css"
 
 const NewCharacter = () => {
@@ -117,6 +117,13 @@ const NewCharacter = () => {
           ...prevState.stats,
           str: inputValue,
         },
+        saveThrows: {
+          ...prevState.saveThrows,
+          str: {
+            ...prevState.saveThrows.str,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.str.isProf)
+          }
+        }
       }));
       setModifiers((prevState) => (
         {
@@ -130,11 +137,18 @@ const NewCharacter = () => {
           ...prevState.stats,
           dex: inputValue,
         },
+        saveThrows: {
+          ...prevState.saveThrows,
+          dex: {
+            ...prevState.saveThrows.dex,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.dex.isProf)
+          }
+        }
       }));
       setModifiers((prevState) => (
         {
           ...prevState,
-          str: statMod(inputValue)
+          dex: statMod(inputValue)
         }));
     } else if (inputName === "con") {
       setChar((prevState) => ({
@@ -143,11 +157,18 @@ const NewCharacter = () => {
           ...prevState.stats,
           con: inputValue,
         },
+        saveThrows: {
+          ...prevState.saveThrows,
+          con: {
+            ...prevState.saveThrows.con,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.con.isProf)
+          }
+        }
       }));
       setModifiers((prevState) => (
         {
           ...prevState,
-          str: statMod(inputValue)
+          con: statMod(inputValue)
         }));
     } else if (inputName === "int") {
       setChar((prevState) => ({
@@ -156,11 +177,18 @@ const NewCharacter = () => {
           ...prevState.stats,
           int: inputValue,
         },
+        saveThrows: {
+          ...prevState.saveThrows,
+          int: {
+            ...prevState.saveThrows.int,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.int.isProf)
+          }
+        }
       }));
       setModifiers((prevState) => (
         {
           ...prevState,
-          str: statMod(inputValue)
+          int: statMod(inputValue)
         }));
     } else if (inputName === "wis") {
       setChar((prevState) => ({
@@ -169,11 +197,18 @@ const NewCharacter = () => {
           ...prevState.stats,
           wis: inputValue,
         },
+        saveThrows: {
+          ...prevState.saveThrows,
+          wis: {
+            ...prevState.saveThrows.wis,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.wis.isProf)
+          }
+        }
       }));
       setModifiers((prevState) => (
         {
           ...prevState,
-          str: statMod(inputValue)
+          wis: statMod(inputValue)
         }));
     } else if (inputName === "cha") {
       setChar((prevState) => ({
@@ -182,11 +217,18 @@ const NewCharacter = () => {
           ...prevState.stats,
           cha: inputValue,
         },
+        saveThrows: {
+          ...prevState.saveThrows,
+          cha: {
+            ...prevState.saveThrows.cha,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.cha.isProf)
+          }
+        }
       }));
       setModifiers((prevState) => (
         {
           ...prevState,
-          str: statMod(inputValue)
+          cha: statMod(inputValue)
         }));
     }
   }
@@ -194,6 +236,10 @@ const NewCharacter = () => {
   function handleProfs(event) {
     const inputName = event.target.name;
     const inputValue = event.target.value;
+    const isChecked = event.target.checked;
+    console.log(event.target.checked)
+
+    // Want to add a check for number of saving throws that is proficient as there can only be two
 
     if(inputName == "str"){
       setChar((prevState) => ({
@@ -201,12 +247,66 @@ const NewCharacter = () => {
         saveThrows: {
           ...prevState.saveThrows,
           str: {
-            ...prevState.saveThrows.str,
-            isProf: inputValue
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.str, isChecked),
+            isProf: isChecked
           }
         }
       }))
-      console.log(newChar.saveThrows.str.isProf)
+    } else if (inputName == "dex"){
+      setChar((prevState) => ({
+        ...prevState,
+        saveThrows: {
+          ...prevState.saveThrows,
+          dex: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.dex, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if(inputName == "con"){
+      setChar((prevState) => ({
+        ...prevState,
+        saveThrows: {
+          ...prevState.saveThrows,
+          wis: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.wis, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if(inputName == "int"){
+      setChar((prevState) => ({
+        ...prevState,
+        saveThrows: {
+          ...prevState.saveThrows,
+          int: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.int, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if(inputName == "wis"){
+      setChar((prevState) => ({
+        ...prevState,
+        saveThrows: {
+          ...prevState.saveThrows,
+          wis: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.wis, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if(inputName == "cha"){
+      setChar((prevState) => ({
+        ...prevState,
+        saveThrows: {
+          ...prevState.saveThrows,
+          cha: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.cha, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
     }
   }
 
@@ -304,23 +404,23 @@ const NewCharacter = () => {
                       <span>{`${newChar.saveThrows.str.val}`} Strength</span>
                     </div>
                     <div className="throw-tile">
-                      <input type="checkbox" name="dex"></input>
+                      <input type="checkbox" name="dex" onClick={handleProfs}></input>
                       <span>{`${newChar.saveThrows.dex.val}`} Dexterity</span>
                     </div>
                     <div className="throw-tile">
-                      <input type="checkbox" name="con"></input>
+                      <input type="checkbox" name="con" onClick={handleProfs}></input>
                       <span>{`${newChar.saveThrows.con.val}`} Constitution</span>
                     </div>
                     <div className="throw-tile">
-                      <input type="checkbox" name="int"></input>
+                      <input type="checkbox" name="int" onClick={handleProfs}></input>
                       <span>{`${newChar.saveThrows.int.val}`} Intelligence</span>
                     </div>
                     <div className="throw-tile">
-                      <input type="checkbox" name="wis"></input>
+                      <input type="checkbox" name="wis" onClick={handleProfs}></input>
                       <span>{`${newChar.saveThrows.wis.val}`} Wisdom</span>
                     </div>
                     <div className="throw-tile">
-                      <input type="checkbox" name="cha"></input>
+                      <input type="checkbox" name="cha" onClick={handleProfs}></input>
                       <span>{`${newChar.saveThrows.cha.val}`} Charisma</span>
                     </div>
                   </div>

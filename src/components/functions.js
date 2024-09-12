@@ -1,7 +1,7 @@
 const statMod = (stat) => {
     if (stat < 1 || stat > 30) {
         return "Invalid Score"
-    } else if (stat === 1) {
+    } else if (stat < 2) {
         return -5;
     } else if (stat < 4) {
         return -4;
@@ -46,7 +46,13 @@ const profCalc = (pB, stat, prof) => {
     // pB is proficiency bonus from the character data (int)
     // stat is the value of the stat for the saving throw/ skill in question (int)
     // prof is whether the character is proficient in skill or not (bool)
+    let skillScore = statMod(stat)
+    if(prof) {
+        skillScore += pB
+    }
+    return skillScore
+
 }
 
 
-export { statMod, profBonus }
+export { statMod, profBonus, profCalc }
