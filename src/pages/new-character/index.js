@@ -47,24 +47,78 @@ const NewCharacter = () => {
       }
     },
     skills: {
-      acrobatics: 0,
-      animHand: 0,
-      arcane: 0,
-      athl: 0,
-      decep: 0,
-      hist: 0,
-      insight: 0,
-      intimid: 0,
-      invest: 0,
-      med: 0,
-      nature: 0,
-      percep: 0,
-      perf: 0,
-      pers: 0,
-      religion: 0,
-      sOfH: 0,
-      stealth: 0,
-      surv: 0,
+      acrobatics: {
+        val: 0,
+        isProf: false
+      },
+      animHand: {
+        val: 0,
+        isProf: false
+      },
+      arcana: {
+        val: 0,
+        isProf: false
+      },
+      athl: {
+        val: 0,
+        isProf: false
+      },
+      decep: {
+        val: 0,
+        isProf: false
+      },
+      hist: {
+        val: 0,
+        isProf: false
+      },
+      insight: {
+        val: 0,
+        isProf: false
+      },
+      intimid: {
+        val: 0,
+        isProf: false
+      },
+      invest: {
+        val: 0,
+        isProf: false
+      },
+      med: {
+        val: 0,
+        isProf: false
+      },
+      nature: {
+        val: 0,
+        isProf: false
+      },
+      percep: {
+        val: 0,
+        isProf: false
+      },
+      perf: {
+        val: 0,
+        isProf: false
+      },
+      pers: {
+        val: 0,
+        isProf: false
+      },
+      religion: {
+        val: 0,
+        isProf: false
+      },
+      sOfH: {
+        val: 0,
+        isProf: false
+      },
+      stealth: {
+        val: 0,
+        isProf: false
+      },
+      surv: {
+        val: 0,
+        isProf: false
+      },
     },
     combat: {
       hpMax: 0,
@@ -123,6 +177,13 @@ const NewCharacter = () => {
             ...prevState.saveThrows.str,
             val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.str.isProf)
           }
+        },
+        skills: {
+          ...prevState.skills,
+          athl: {
+            ...prevState.skills.athl,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.athl.isProf)
+          }
         }
       }));
       setModifiers((prevState) => (
@@ -142,6 +203,21 @@ const NewCharacter = () => {
           dex: {
             ...prevState.saveThrows.dex,
             val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.dex.isProf)
+          }
+        },
+        skills: {
+          ...prevState.skills,
+          acrobatics: {
+            ...prevState.skills.acrobatics,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.acrobatics.isProf)
+          },
+          sOfH: {
+            ...prevState.skills.sOfH,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.sOfH.isProf)
+          },
+          stealth: {
+            ...prevState.skills.stealth,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.stealth.isProf)
           }
         }
       }));
@@ -163,7 +239,7 @@ const NewCharacter = () => {
             ...prevState.saveThrows.con,
             val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.con.isProf)
           }
-        }
+        },
       }));
       setModifiers((prevState) => (
         {
@@ -182,6 +258,29 @@ const NewCharacter = () => {
           int: {
             ...prevState.saveThrows.int,
             val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.int.isProf)
+          }
+        },
+        skills: {
+          ...prevState.skills,
+          arcana: {
+            ...prevState.skills.arcana,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.arcana.isProf)
+          },
+          hist: {
+            ...prevState.skills.hist,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.hist.isProf)
+          },
+          invest: {
+            ...prevState.skills.hist,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.invest.isProf)
+          },
+          nature: {
+            ...prevState.skills.nature,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.nature.isProf)
+          },
+          religion: {
+            ...prevState.skills.religion,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.religion.isProf)
           }
         }
       }));
@@ -203,6 +302,29 @@ const NewCharacter = () => {
             ...prevState.saveThrows.wis,
             val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.wis.isProf)
           }
+        },
+        skills: {
+          ...prevState.skills,
+          animHand: {
+            ...prevState.skills.animHand,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.animHand.isProf)
+          },
+          insight: {
+            ...prevState.skills.insight,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.insight.isProf)
+          },
+          med: {
+            ...prevState.skills.med,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.med.isProf)
+          },
+          percep: {
+            ...prevState.skills.percep,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.percep.isProf)
+          },
+          surv: {
+            ...prevState.skills.surv,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.surv.isProf)
+          }
         }
       }));
       setModifiers((prevState) => (
@@ -223,6 +345,25 @@ const NewCharacter = () => {
             ...prevState.saveThrows.cha,
             val: profCalc(newChar.proficiencyBonus, inputValue, newChar.saveThrows.cha.isProf)
           }
+        },
+        skills: {
+          ...prevState.skills,
+          decep: {
+            ...prevState.skills.decep,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.decep.isProf)
+          },
+          intimid: {
+            ...prevState.skills.intimid,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.intimid.isProf)
+          },
+          perf: {
+            ...prevState.skills.perf,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.perf.isProf)
+          },
+          pers: {
+            ...prevState.skills.pers,
+            val: profCalc(newChar.proficiencyBonus, inputValue, newChar.skills.pers.isProf)
+          },
         }
       }));
       setModifiers((prevState) => (
@@ -241,7 +382,7 @@ const NewCharacter = () => {
 
     // Want to add a check for number of saving throws that is proficient as there can only be two
 
-    if(inputName == "str"){
+    if (inputName == "str") {
       setChar((prevState) => ({
         ...prevState,
         saveThrows: {
@@ -252,7 +393,7 @@ const NewCharacter = () => {
           }
         }
       }))
-    } else if (inputName == "dex"){
+    } else if (inputName == "dex") {
       setChar((prevState) => ({
         ...prevState,
         saveThrows: {
@@ -263,18 +404,18 @@ const NewCharacter = () => {
           }
         }
       }))
-    } else if(inputName == "con"){
+    } else if (inputName == "con") {
       setChar((prevState) => ({
         ...prevState,
         saveThrows: {
           ...prevState.saveThrows,
           wis: {
-            val: profCalc(newChar.proficiencyBonus, newChar.stats.wis, isChecked),
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.con, isChecked),
             isProf: isChecked
           }
         }
       }))
-    } else if(inputName == "int"){
+    } else if (inputName == "int") {
       setChar((prevState) => ({
         ...prevState,
         saveThrows: {
@@ -285,7 +426,7 @@ const NewCharacter = () => {
           }
         }
       }))
-    } else if(inputName == "wis"){
+    } else if (inputName == "wis") {
       setChar((prevState) => ({
         ...prevState,
         saveThrows: {
@@ -296,7 +437,7 @@ const NewCharacter = () => {
           }
         }
       }))
-    } else if(inputName == "cha"){
+    } else if (inputName == "cha") {
       setChar((prevState) => ({
         ...prevState,
         saveThrows: {
@@ -307,8 +448,206 @@ const NewCharacter = () => {
           }
         }
       }))
+    } else if (inputName == "acrobatics") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          acrobatics: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.dex, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "animHand") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          animHand: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.wis, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "arcana") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          arcana: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.int, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "athl") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          athl: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.str, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "decep") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          decep: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.cha, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "hist") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          hist: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.int, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "insight") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          insight: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.wis, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "intimid") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          intimid: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.cha, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "invest") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          invest: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.int, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "med") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          med: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.wis, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "nature") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          nature: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.int, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "percep") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          percep: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.wis, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "perf") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          perf: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.cha, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "pers") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          pers: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.cha, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "religion") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          religion: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.int, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "sOfH") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          sOfH: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.dex, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "stealth") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          stealth: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.dex, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
+    } else if (inputName == "surv") {
+      setChar((prevState) => ({
+        ...prevState,
+        skills: {
+          ...prevState.skills,
+          surv: {
+            val: profCalc(newChar.proficiencyBonus, newChar.stats.wis, isChecked),
+            isProf: isChecked
+          }
+        }
+      }))
     }
-  }
+  } 
 
   return (
     <>
@@ -399,36 +738,112 @@ const NewCharacter = () => {
                     </span>
                   </div>
                   <div id="save-throws">
-                    <div className="throw-tile">
-                      <input type="checkbox" name="str" onClick={handleProfs} ></input>
-                      <span>{`${newChar.saveThrows.str.val}`} Strength</span>
-                    </div>
-                    <div className="throw-tile">
-                      <input type="checkbox" name="dex" onClick={handleProfs}></input>
-                      <span>{`${newChar.saveThrows.dex.val}`} Dexterity</span>
-                    </div>
-                    <div className="throw-tile">
-                      <input type="checkbox" name="con" onClick={handleProfs}></input>
-                      <span>{`${newChar.saveThrows.con.val}`} Constitution</span>
-                    </div>
-                    <div className="throw-tile">
-                      <input type="checkbox" name="int" onClick={handleProfs}></input>
-                      <span>{`${newChar.saveThrows.int.val}`} Intelligence</span>
-                    </div>
-                    <div className="throw-tile">
-                      <input type="checkbox" name="wis" onClick={handleProfs}></input>
-                      <span>{`${newChar.saveThrows.wis.val}`} Wisdom</span>
-                    </div>
-                    <div className="throw-tile">
-                      <input type="checkbox" name="cha" onClick={handleProfs}></input>
-                      <span>{`${newChar.saveThrows.cha.val}`} Charisma</span>
-                    </div>
+                    <ul>
+                      <li className="throw-tile">
+                        <input type="checkbox" name="str" onClick={handleProfs} ></input>
+                        <span>{`${newChar.saveThrows.str.val}`} Strength</span>
+                      </li>
+                      <li className="throw-tile">
+                        <input type="checkbox" name="dex" onClick={handleProfs}></input>
+                        <span>{`${newChar.saveThrows.dex.val}`} Dexterity</span>
+                      </li>
+                      <li className="throw-tile">
+                        <input type="checkbox" name="con" onClick={handleProfs}></input>
+                        <span>{`${newChar.saveThrows.con.val}`} Constitution</span>
+                      </li>
+                      <li className="throw-tile">
+                        <input type="checkbox" name="int" onClick={handleProfs}></input>
+                        <span>{`${newChar.saveThrows.int.val}`} Intelligence</span>
+                      </li>
+                      <li className="throw-tile">
+                        <input type="checkbox" name="wis" onClick={handleProfs}></input>
+                        <span>{`${newChar.saveThrows.wis.val}`} Wisdom</span>
+                      </li>
+                      <li className="throw-tile">
+                        <input type="checkbox" name="cha" onClick={handleProfs}></input>
+                        <span>{`${newChar.saveThrows.cha.val}`} Charisma</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div id="other-profs">
+                    <ul>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="acrobatics" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.acrobatics.val}`} Acrobatics (Dex)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="animHand" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.animHand.val}`} Animal Handling (Wis)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="arcana" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.arcana.val}`} Arcana (Int)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="athl" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.athl.val}`} Athletics (Str)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="decep" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.decep.val}`} Deception (Cha)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="hist" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.hist.val}`} History (Int)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="insight" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.insight.val}`} Insight (Wis)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="intimid" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.intimid.val}`} Intimidate (Cha)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="invest" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.invest.val}`} Investigation (Int)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="med" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.med.val}`} Medicine (Wis)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="nature" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.nature.val}`} Nature (Int)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="percep" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.percep.val}`} Perception (Wis)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="perf" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.perf.val}`} Performance (Cha)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="pers" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.pers.val}`} Persuasion (Cha)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="religion" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.religion.val}`} Religion (Int)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="sOfH" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.sOfH.val}`} Sleight of Hand (Dex)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="stealth" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.stealth.val}`} Stealth (Dex)</span>
+                      </li>
+                      <li className="skill-tile">
+                        <input type="checkbox" name="surv" onClick={handleProfs}></input>
+                        <span>{`${newChar.skills.surv.val}`} Survival (Wis)</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
-              <div id="other-profs">
 
-              </div>
             </div>
             <div className="sheet-column" id="status-block">Status Block</div>
             <div className="sheet-column" id="trait-block">Trait Block</div>
