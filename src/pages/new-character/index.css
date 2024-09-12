@@ -1,3 +1,15 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 #basic-info{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -24,7 +36,38 @@ form {
     grid-template-columns: .5fr 1fr;
 }
 
+.stat-tile {
+    border: solid;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.stat-num {
+    width: 50px;
+    text-align: center;
+    height: 50px;
+    border-radius: 15px;   
+    font-size: 20px;    
+}
+
 #proficiency-bonus{
     display: grid;
     grid-template-columns: .25fr 1fr;
+    font-size: 15px;
+    border: solid;
+}
+
+#throw-list{
+    text-align: left;
+    border: solid;
+}
+
+#skill-profs{
+    text-align: left;
+    border: solid;
+}
+
+#a-s{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }

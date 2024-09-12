@@ -377,7 +377,6 @@ const NewCharacter = () => {
 
   function handleProfs(event) {
     const inputName = event.target.name;
-    const inputValue = event.target.value;
     const isChecked = event.target.checked;
     console.log(event.target.checked)
 
@@ -721,36 +720,36 @@ const NewCharacter = () => {
               <div id="stats-and-skills">
                 <div id="stats">
                   <div className="stat-tile">
-                    <input type="number" name="str" onChange={handleChange} />
+                    <input className="stat-num" type="number" name="str" onChange={handleChange} defaultValue={newChar.stats.str}/>
                     <p>{`${modifiers.str}`}</p>
                     <p>Strength</p>
                   </div>
                   <div className="stat-tile">
-                    <input type="number" name="dex" onChange={handleChange} />
+                    <input className="stat-num" type="number" name="dex" onChange={handleChange} defaultValue={newChar.stats.dex}/>
                     <p>{`${modifiers.dex}`}</p>
 
                     <p>Dexterity</p>
                   </div>
                   <div className="stat-tile">
-                    <input type="number" name="con" onChange={handleChange} />
+                    <input className="stat-num" type="number" name="con" onChange={handleChange} defaultValue={newChar.stats.con}/>
                     <p>{`${modifiers.con}`}</p>
 
                     <p>Constitution</p>
                   </div>
                   <div className="stat-tile">
-                    <input type="number" name="int" onChange={handleChange} />
+                    <input className="stat-num" type="number" name="int" onChange={handleChange} defaultValue={newChar.stats.int}/>
                     <p>{`${modifiers.int}`}</p>
 
                     <p>Intelligence</p>
                   </div>
                   <div className="stat-tile">
-                    <input type="number" name="wis" onChange={handleChange} />
+                    <input className="stat-num" type="number" name="wis" onChange={handleChange} defaultValue={newChar.stats.wis}/>
                     <p>{`${modifiers.wis}`}</p>
 
                     <p>Wisdom</p>
                   </div>
                   <div className="stat-tile">
-                    <input type="number" name="cha" onChange={handleChange} />
+                    <input className="stat-num" type="number" name="cha" onChange={handleChange} defaultValue={newChar.stats.cha}/>
                     <p>{`${modifiers.cha}`}</p>
 
                     <p>Charisma</p>
@@ -766,7 +765,7 @@ const NewCharacter = () => {
                     </span>
                   </div>
                   <div id="save-throws">
-                    <ul>
+                    <ul id="throw-list">
                       <li className="throw-tile">
                         <input type="checkbox" name="str" onClick={handleProfs} ></input>
                         <span>{`${newChar.saveThrows.str.val}`} Strength</span>
@@ -889,7 +888,29 @@ const NewCharacter = () => {
               </div>
 
             </div>
-            <div className="sheet-column" id="status-block">Status Block</div>
+            <div className="sheet-column" id="status-block">
+              <div id="combat-stats">
+                <div id="a-s">
+                  <div id="ac">
+                    <input type="number"></input>
+                    <p>Armour Class</p>
+                  </div>
+                  <div id="speed">
+                    <input type="number"></input>
+                    <p>Speed</p>
+                  </div>
+                </div>
+                <div id="hp">
+                  <input type="number"></input>
+                  <p>Hit Point Maximum</p>
+                </div>
+                <div id="hit-dice">
+                  <input type="text"></input>
+                  <p>Hit Dice</p>
+                </div>
+              </div>
+
+            </div>
             <div className="sheet-column" id="trait-block">Trait Block</div>
           </div>
         </form>
